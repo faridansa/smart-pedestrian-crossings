@@ -33,15 +33,8 @@
 #include <stdio.h>
 #include <task.h>
 #include <timers.h>
-
 #include <string.h>
-
-
-#define USART_SERIAL_EXAMPLE             &USARTC0
-#define USART_SERIAL_EXAMPLE_BAUDRATE    9600
-#define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
-#define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
-#define USART_SERIAL_STOP_BIT            false
+#include <adc_sensors/adc_sensors.h>
 
 #define MY_ADC    ADCA
 #define MY_ADC_CH ADC_CH0
@@ -52,23 +45,52 @@
 #define MY_ADC3    ADCA
 #define MY_ADC3_CH ADC_CH2
 
+#define USART_SERIAL_EXAMPLE             &USARTC0
+#define USART_SERIAL_EXAMPLE_BAUDRATE    9600
+#define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
+#define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
+#define USART_SERIAL_STOP_BIT            false
+
 uint16_t result = 0;
 uint16_t result2 = 0;
 uint16_t result3 = 0;
 int door = 0;
 long increment = 0;
 static char strbuf[201];
-
-static portTASK_FUNCTION_PROTO(sendStringAndChar, p_);
-
-static char strbuf[201];
+int orang = 0;
 static char reads[100];
-//int result = 0;
 char in = 'x';
+char *str1 = "in ";
 
-char *str1 = "atas ";
-char *str2 = "bawah ";
+static portTASK_FUNCTION_PROTO(testLamp, p_);
+static portTASK_FUNCTION_PROTO(testLCD, p_);
+static portTASK_FUNCTION_PROTO(testLightS, p_);
+static portTASK_FUNCTION_PROTO(testTempS, p_);
+static portTASK_FUNCTION_PROTO(testServo, p_);
+static portTASK_FUNCTION_PROTO(testPot, p_);
+static portTASK_FUNCTION_PROTO(receivePing, p_);
 
+void vTimerCallback(){
+	increment++;
+}
+
+void PWM_Init(void)
+{
+	/* Set output */
+	PORTC.DIR |= PIN0_bm;
+
+	/* Set Register */
+	TCC0.CTRLA = (PIN2_bm) | (PIN0_bm);
+	TCC0.CTRLB = (PIN4_bm) | (PIN2_bm) | (PIN1_bm);
+	
+	/* Set Period */
+	TCC0.PER = 1000;
+
+	/* Set Compare Register value*/
+	TCC0.CCA = 375;
+}
+
+// usart code
 void setUpSerial()
 {
 	// Baud rate selection
@@ -125,33 +147,13 @@ void receiveString()
 		else reads[i++] = inp;
 	}
 	if(strcmp(str1,reads) == 0){
-		gpio_set_pin_high(J2_PIN0);
-		}else if(strcmp(str2,reads) == 0){
-		gpio_set_pin_high(J2_PIN0);
-		}else{
-		gpio_set_pin_low(J2_PIN0);
+		//gpio_set_pin_high(J2_PIN0);
+		orang++;
+		//}else{
+		//gpio_set_pin_low(J2_PIN0);
 	}
 }
-
-void vTimerCallback(){
-	increment++;
-}
-
-void PWM_Init(void)
-{
-	/* Set output */
-	PORTC.DIR |= PIN0_bm;
-
-	/* Set Register */
-	TCC0.CTRLA = (PIN2_bm) | (PIN0_bm);
-	TCC0.CTRLB = (PIN4_bm) | (PIN2_bm) | (PIN1_bm);
-	
-	/* Set Period */
-	TCC0.PER = 1000;
-
-	/* Set Compare Register value*/
-	TCC0.CCA = 375;
-}
+// end of usart code
 
 static void adc_init(void)
 {
@@ -241,14 +243,9 @@ int main (void)
 	
 	board_init();
 	pmic_init();
-	
+	// usart code
 	sysclk_init();
-    
-	adc_init();
-	adc_init2();
-	adc_init3();
-	gfx_mono_init();
-    //
+   
     gpio_set_pin_high(LCD_BACKLIGHT_ENABLE_PIN);
    
     PORTC_OUTSET = PIN3_bm; // PC3 as TX
@@ -269,11 +266,22 @@ int main (void)
 	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
 	
 	ioport_set_pin_dir(J2_PIN0, IOPORT_DIR_OUTPUT);
-	
+	//end of usart code
+
+	adc_init();
+	adc_init2();
+	adc_init3();
+	gfx_mono_init();
 	
 	TimerHandle_t timerPing = xTimerCreate("tPing", 2/portTICK_PERIOD_MS, pdTRUE, (void *) 0, vTimerCallback);
 	
-	xTaskCreate(sendStringAndChar,"",500,NULL,1,NULL);
+	xTaskCreate(testLamp,"",500,NULL,1,NULL);
+	xTaskCreate(testLCD,"",500,NULL,1,NULL);
+	xTaskCreate(receivePing,"",500,NULL,1,NULL);
+	xTaskCreate(testLightS,"",500,NULL,1,NULL);
+	xTaskCreate(testTempS,"",500,NULL,1,NULL);
+	xTaskCreate(testServo,"",500,NULL,1,NULL);
+	xTaskCreate(testPot,"",500,NULL,1,NULL);
 	
 	xTimerStart(timerPing, 0);
 	
@@ -282,27 +290,99 @@ int main (void)
 	// Insert application code here, after the board has been initialized.
 }
 
-static portTASK_FUNCTION(sendStringAndChar, p_){
+static portTASK_FUNCTION(testLamp, p_){
 	//ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, false);
 	
-    if(gpio_pin_is_low(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
-        gpio_set_pin_low(LED2_GPIO);
-        gpio_set_pin_high(LED3_GPIO);
-        //sendChar('u');
-        sendString("lima \n");
-        //usart_putchar(USART_SERIAL_EXAMPLE,'u');
-    }else if(gpio_pin_is_low(GPIO_PUSH_BUTTON_2) && gpio_pin_is_high(GPIO_PUSH_BUTTON_1)){
-        gpio_set_pin_low(LED3_GPIO);
-        gpio_set_pin_high(LED2_GPIO);
-        //sendChar('1');
-        sendChar("bawah \n");
-        //usart_putchar(USART_SERIAL_EXAMPLE,'d');
-    }
-    receiveString();
-    //in = usart_getchar(USART_SERIAL_EXAMPLE);
-    //reads[0] = in;
-   
-    //snprintf(strbuf, sizeof(strbuf), "Read USART : %3d",in);
-    gfx_mono_draw_string(reads,0, 0, &sysfont);
-    vTaskDelay(10/portTICK_PERIOD_MS);
+	while(1){
+		if (orang >= 10){
+			gpio_set_pin_low(LED0_GPIO);
+			vTaskDelay(500/portTICK_PERIOD_MS);
+			gpio_set_pin_high(LED0_GPIO);
+			orang = 0;
+		}
+		vTaskDelay(5/portTICK_PERIOD_MS);
+		//gpio_set_pin_low(LED0_GPIO);
+		//vTaskDelay(100/portTICK_PERIOD_MS);
+		//gpio_set_pin_high(LED0_GPIO);
+		//vTaskDelay(100/portTICK_PERIOD_MS);
+	}
+}
+
+static portTASK_FUNCTION(testLCD, p_){
+	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
+	while(1){
+		
+		/*//print light
+		snprintf(strbuf, sizeof(strbuf), "Read Light : %3d",result);
+		gfx_mono_draw_string(strbuf,0, 0, &sysfont);
+		*/
+		//print temp
+		snprintf(strbuf, sizeof(strbuf), "Read Temp : %3d",result2);
+		gfx_mono_draw_string(strbuf,0, 20, &sysfont);
+		/*
+		//print timer
+		//snprintf(strbuf, sizeof(strbuf), "Timer : %3d",increment);
+		snprintf(strbuf, sizeof(strbuf), "Read Pot : %3d",result3);
+		gfx_mono_draw_string(strbuf,0, 20, &sysfont);*/
+		snprintf(strbuf, sizeof(strbuf), "Jumlah Orang : %3d",orang);
+		gfx_mono_draw_string(strbuf,0, 0, &sysfont);
+		
+		vTaskDelay(5/portTICK_PERIOD_MS);
+	}
+}
+
+static portTASK_FUNCTION(receivePing, p_){
+	while(1){
+		receiveString();
+		vTaskDelay(10/portTICK_PERIOD_MS);
+	}
+}
+
+static portTASK_FUNCTION(testLightS, p_){
+	while(1){
+		result = adc_read();
+		vTaskDelay(10/portTICK_PERIOD_MS);
+	}
+}
+
+static portTASK_FUNCTION(testTempS, p_){
+	while(1){
+		result2 = adc_read2();
+		//ntc_measure();												// Mengambil data dari pengukuran suhu oleh NTC temperature sensor
+		//while(!ntc_data_is_ready());								// Menunggu data sampai siap untuk ditampilkan
+		//volatile int8_t temperature = ntc_get_temperature();
+		vTaskDelay(10/portTICK_PERIOD_MS);
+	}
+}
+
+static portTASK_FUNCTION(testPot, p_){
+	while(1){
+		result3 = adc_read3();
+		vTaskDelay(10/portTICK_PERIOD_MS);
+	}
+}
+
+
+static portTASK_FUNCTION(testServo, p_){
+	PWM_Init();
+	
+	while(1){
+		if(gpio_pin_is_low(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
+			//delay_ms(50);
+			TCC0.CCA = 130;
+			gpio_set_pin_low(LED2_GPIO);
+			gpio_set_pin_high(LED3_GPIO);
+			door = 1;
+		}else if(gpio_pin_is_low(GPIO_PUSH_BUTTON_2) && gpio_pin_is_high(GPIO_PUSH_BUTTON_1)){
+			TCC0.CCA = 1;
+			gpio_set_pin_low(LED3_GPIO);
+			gpio_set_pin_high(LED2_GPIO);
+			door = 2;
+		}else if(gpio_pin_is_high(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
+			TCC0.CCA = 350;
+			gpio_set_pin_high(LED3_GPIO);
+			gpio_set_pin_high(LED2_GPIO);
+			door = 0;
+		}
+	}
 }

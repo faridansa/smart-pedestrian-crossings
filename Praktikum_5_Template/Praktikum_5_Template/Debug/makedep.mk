@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\adc_sensors\adc_sensors.c
+
 src\ASF\common\components\display\st7565r\st7565r.c
 
 src\ASF\common\services\clock\xmega\sysclk.c
@@ -15,6 +17,8 @@ src\ASF\common\services\gfx_mono\gfx_mono_generic.c
 src\ASF\common\services\gfx_mono\gfx_mono_text.c
 
 src\ASF\common\services\gfx_mono\sysfont.c
+
+src\ASF\common\services\serial\usart_serial.c
 
 src\ASF\common\services\sleepmgr\xmega\sleepmgr.c
 
@@ -31,6 +35,8 @@ src\ASF\xmega\drivers\cpu\ccp.s
 src\ASF\xmega\drivers\nvm\nvm.c
 
 src\ASF\xmega\drivers\nvm\nvm_asm.s
+
+src\ASF\xmega\drivers\rtc32\rtc32.c
 
 src\ASF\xmega\drivers\spi\spi.c
 

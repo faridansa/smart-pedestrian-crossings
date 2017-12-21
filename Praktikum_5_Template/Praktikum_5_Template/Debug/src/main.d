@@ -67,6 +67,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/common/services/gfx_mono/gfx_mono_text.h \
  ../src/ASF/common/services/gpio/gpio.h \
  ../src/ASF/common/services/gpio/xmega_gpio/xmega_gpio.h \
+ ../src/ASF/xmega/drivers/rtc32/rtc32.h ../src/config/conf_rtc32.h \
  ../src/ASF/xmega/drivers/spi/spi.h \
  ../src/ASF/common/services/spi/xmega_spi/spi_master.h \
  ../src/config/conf_spi_master.h \
@@ -81,7 +82,8 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  ../src/FreeRTOS/include/task.h ../src/FreeRTOS/include/list.h \
  ../src/FreeRTOS/include/timers.h ../src/FreeRTOS/include/task.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ ../src/adc_sensors/adc_sensors.h
 
 ../src/asf.h:
 
@@ -233,6 +235,10 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../src/ASF/common/services/gpio/xmega_gpio/xmega_gpio.h:
 
+../src/ASF/xmega/drivers/rtc32/rtc32.h:
+
+../src/config/conf_rtc32.h:
+
 ../src/ASF/xmega/drivers/spi/spi.h:
 
 ../src/ASF/common/services/spi/xmega_spi/spi_master.h:
@@ -270,3 +276,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/FreeRTOS/include/task.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+
+../src/adc_sensors/adc_sensors.h:
