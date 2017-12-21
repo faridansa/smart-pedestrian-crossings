@@ -61,6 +61,7 @@ int orang = 0;
 static char reads[100];
 char in = 'x';
 char *str1 = "in ";
+int waiting = 0;
 
 static portTASK_FUNCTION_PROTO(testLamp, p_);
 static portTASK_FUNCTION_PROTO(testLCD, p_);
@@ -294,11 +295,15 @@ static portTASK_FUNCTION(testLamp, p_){
 	//ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, false);
 	
 	while(1){
-		if (orang >= 10){
+		if (orang >= 10 || waiting/10 >= 30){
 			gpio_set_pin_low(LED0_GPIO);
 			vTaskDelay(500/portTICK_PERIOD_MS);
 			gpio_set_pin_high(LED0_GPIO);
 			orang = 0;
+			waiting = 0;
+		}
+		else if(orang > 0 && orang < 10) {
+			waiting++;
 		}
 		vTaskDelay(5/portTICK_PERIOD_MS);
 		//gpio_set_pin_low(LED0_GPIO);
@@ -317,7 +322,7 @@ static portTASK_FUNCTION(testLCD, p_){
 		gfx_mono_draw_string(strbuf,0, 0, &sysfont);
 		*/
 		//print temp
-		snprintf(strbuf, sizeof(strbuf), "Read Temp : %3d",result2);
+		snprintf(strbuf, sizeof(strbuf), "Waiting : %3d",waiting/10);
 		gfx_mono_draw_string(strbuf,0, 20, &sysfont);
 		/*
 		//print timer
