@@ -44,14 +44,18 @@ static char reads[100];
 int result = 0;
 char in = 'x';
 
+char *str1 = "atas ";
+char *str2 = "bawah ";
+
 void setup_timer(void);
 void print_message(void);
 
 int score = 0;
+int phase = 0;
 int incremental = 0;
 int distance = 0;
 static char buffarray[200];
-int orang = 0;
+int mobil = 0;
 
 //Fungsi setup timer
 void setup_timer(void){
@@ -79,6 +83,7 @@ void setUpSerial()
 	
 	//USARTC0_BAUDCTRLB = 0; //Just to be sure that BSCALE is 0
 	//USARTC0_BAUDCTRLA = 0xCF; // 207
+	
 	
 	//Disable interrupts, just for safety
 	USARTC0_CTRLA = 0;
@@ -136,9 +141,11 @@ int main (void)
 	delay_ms(1000);
 	setup_timer();
 	int temp = 0;
+	int ping = 0;
 	
 	// Insert application code here, after the board has been initialized.
 	while(1){
+		ping = 0;
 		PORTB.DIR = 0b11111111; //Set output
 		PORTB.OUT = 0b00000000; //Set low
 		PORTB.OUT = 0b11111111; //Set high selama 5us
@@ -149,14 +156,22 @@ int main (void)
 		int oldinc = incremental;
 		delay_us(115); //Delay lagi, kali ini seharusnya pin menjadi high
 		cpu_irq_enable(); //Mulai interrupt
-		while(PORTB.IN & PIN0_bm){
+		while(PORTB.IN & PIN0_bm || PIN1_bm){
 			//Tidak ada apa-apa di sini. Loop ini berfungsi untuk mendeteksi pin 0 PORT B yang berubah menjadi low
+			if (PIN1_bm) {
+				ping = 1;
+			}
 		}
 		int newinc = incremental; //Catat selisih waktu antara suara dikirim hingga diterima
 		cpu_irq_disable(); //Interrupt dimatikan
 		if (incremental > 300){ //Jika hasil lebih dari 300 cm, dibulatkan menjadi 300 cm
 			score = 300;
-			snprintf(buffarray, sizeof(buffarray), "Panjang: %d cm  ", score);
+			if (ping = 0)
+			{
+				snprintf(buffarray, sizeof(buffarray), "Panjang: %d cm  ", score);
+			} else {
+				snprintf(buffarray, sizeof(buffarray), "Panjang1: %d cm  ", score);
+			}
 			gfx_mono_draw_string(buffarray, 0, 0, &sysfont);
 			delay_ms(100);
 			incremental = 0;
@@ -165,13 +180,25 @@ int main (void)
 			int newscore = inc/2; //Dibagi 2 seperti rumus sonar
 			if (newscore < 100 && newscore != temp){
 				gpio_set_pin_low(LED0_GPIO);
-				orang++;
 				temp = newscore;
-				sendString("in \n");
+				if (ping = 0)
+				{
+					mobil++;
+					sendString("Cin \n");
+				} else {
+					mobil--;
+					sendString("Cout \n");
+				}
 			}
-			snprintf(buffarray, sizeof(buffarray), "Panjang: %d cm  ", newscore);
+			if (ping = 0)
+			{
+				snprintf(buffarray, sizeof(buffarray), "Panjang: %d cm  ", newscore);
+				snprintf(buffarray, sizeof(buffarray), "Mobil: %d  ", mobil);
+			} else {
+				snprintf(buffarray, sizeof(buffarray), "Panjang1: %d cm  ", newscore);
+				snprintf(buffarray, sizeof(buffarray), "Mobil: %d  ", mobil);
+			}
 			gfx_mono_draw_string(buffarray, 0, 0, &sysfont);
-			snprintf(buffarray, sizeof(buffarray), "Orang: %d  ", orang);
 			gfx_mono_draw_string(buffarray, 0, 10, &sysfont);
 			delay_ms(100);
 			gpio_set_pin_high(LED0_GPIO);

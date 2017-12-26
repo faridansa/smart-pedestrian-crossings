@@ -298,7 +298,7 @@ static portTASK_FUNCTION(testLamp, p_){
 	//ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, false);
 	
 	while(1){
-		if (orang >= 10 || waiting/10 >= 30){
+		if (orang >= 10 || waiting/10 >= 10){
 			gpio_set_pin_low(LED0_GPIO);
 			vTaskDelay(500/portTICK_PERIOD_MS);
 			gpio_set_pin_high(LED0_GPIO);
