@@ -254,6 +254,9 @@ int main (void)
    
     PORTC_OUTCLR = PIN2_bm; //PC2 as RX
     PORTC_DIRCLR = PIN2_bm; //RX pin as input
+	
+	ioport_set_pin_dir(J2_PIN1, IOPORT_DIR_OUTPUT); //Output lampu Hijau
+	ioport_set_pin_dir(J2_PIN2, IOPORT_DIR_OUTPUT); //Output lampu Merah
    
     setUpSerial();
 	
@@ -299,11 +302,16 @@ static portTASK_FUNCTION(testLamp, p_){
 			gpio_set_pin_low(LED0_GPIO);
 			vTaskDelay(500/portTICK_PERIOD_MS);
 			gpio_set_pin_high(LED0_GPIO);
+			ioport_set_pin_level(J2_PIN2, 0);
+			ioport_set_pin_level(J2_PIN1, 1);
+			delay_ms(10000);
+			ioport_set_pin_level(J2_PIN1, 0);
 			orang = 0;
 			waiting = 0;
 		}
 		else if(orang > 0 && orang < 10) {
 			waiting++;
+			ioport_set_pin_level(J2_PIN2, 1);
 		}
 		vTaskDelay(5/portTICK_PERIOD_MS);
 		//gpio_set_pin_low(LED0_GPIO);
