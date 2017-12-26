@@ -237,58 +237,25 @@ static uint16_t adc_read3(){
 	return result;
 }
 
-int main (void)
-{
-	// Insert system clock initialization code here (sysclk_init()).
-
-	
-	board_init();
-	pmic_init();
-	// usart code
-	sysclk_init();
-   
-    gpio_set_pin_high(LCD_BACKLIGHT_ENABLE_PIN);
-   
-    PORTC_OUTSET = PIN3_bm; // PC3 as TX
-    PORTC_DIRSET = PIN3_bm; //TX pin as output
-   
-    PORTC_OUTCLR = PIN2_bm; //PC2 as RX
-    PORTC_DIRCLR = PIN2_bm; //RX pin as input
-   
-    setUpSerial();
-	
-	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
-		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
-		.charlength = USART_SERIAL_CHAR_LENGTH,
-		.paritytype = USART_SERIAL_PARITY,
-		.stopbits = USART_SERIAL_STOP_BIT
-	};
-	
-	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
-	
-	ioport_set_pin_dir(J2_PIN0, IOPORT_DIR_OUTPUT);
-	//end of usart code
-
-	adc_init();
-	adc_init2();
-	adc_init3();
-	gfx_mono_init();
-	
-	TimerHandle_t timerPing = xTimerCreate("tPing", 2/portTICK_PERIOD_MS, pdTRUE, (void *) 0, vTimerCallback);
-	
-	xTaskCreate(testLamp,"",500,NULL,1,NULL);
-	xTaskCreate(testLCD,"",500,NULL,1,NULL);
-	xTaskCreate(receivePing,"",500,NULL,1,NULL);
-	xTaskCreate(testLightS,"",500,NULL,1,NULL);
-	xTaskCreate(testTempS,"",500,NULL,1,NULL);
-	xTaskCreate(testServo,"",500,NULL,1,NULL);
-	xTaskCreate(testPot,"",500,NULL,1,NULL);
-	
-	xTimerStart(timerPing, 0);
-	
-	vTaskStartScheduler();
-
-	// Insert application code here, after the board has been initialized.
+static void on_servo(void){
+	// button untuk lampu manual
+	if(gpio_pin_is_low(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
+		//delay_ms(50);
+		TCC0.CCA = 150;
+		gpio_set_pin_low(LED2_GPIO);
+		gpio_set_pin_high(LED3_GPIO);
+		//door = 1;
+		}else if(gpio_pin_is_low(GPIO_PUSH_BUTTON_2) && gpio_pin_is_high(GPIO_PUSH_BUTTON_1)){
+		TCC0.CCA = 1;
+		gpio_set_pin_low(LED3_GPIO);
+		gpio_set_pin_high(LED2_GPIO);
+		//door = 2;
+		}else if(gpio_pin_is_high(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
+		TCC0.CCA = 375;
+		gpio_set_pin_high(LED3_GPIO);
+		gpio_set_pin_high(LED2_GPIO);
+		//door = 0;
+	}
 }
 
 static portTASK_FUNCTION(testLamp, p_){
@@ -296,14 +263,18 @@ static portTASK_FUNCTION(testLamp, p_){
 	
 	while(1){
 		if (orang >= 10 || waiting/10 >= 30){
+			//case 1
 			gpio_set_pin_low(LED0_GPIO);
 			vTaskDelay(500/portTICK_PERIOD_MS);
 			gpio_set_pin_high(LED0_GPIO);
 			orang = 0;
 			waiting = 0;
+			on_servo();
 		}
 		else if(orang > 0 && orang < 10) {
+			//case 2
 			waiting++;
+			on_servo();
 		}
 		vTaskDelay(5/portTICK_PERIOD_MS);
 		//gpio_set_pin_low(LED0_GPIO);
@@ -390,4 +361,59 @@ static portTASK_FUNCTION(testServo, p_){
 			door = 0;
 		}
 	}
+}
+
+
+int main (void)
+{
+	// Insert system clock initialization code here (sysclk_init()).
+
+	
+	board_init();
+	pmic_init();
+	// usart code
+	sysclk_init();
+   
+    gpio_set_pin_high(LCD_BACKLIGHT_ENABLE_PIN);
+   
+    PORTC_OUTSET = PIN3_bm; // PC3 as TX
+    PORTC_DIRSET = PIN3_bm; //TX pin as output
+   
+    PORTC_OUTCLR = PIN2_bm; //PC2 as RX
+    PORTC_DIRCLR = PIN2_bm; //RX pin as input
+   
+    setUpSerial();
+	
+	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
+		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
+		.charlength = USART_SERIAL_CHAR_LENGTH,
+		.paritytype = USART_SERIAL_PARITY,
+		.stopbits = USART_SERIAL_STOP_BIT
+	};
+	
+	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
+	
+	ioport_set_pin_dir(J2_PIN0, IOPORT_DIR_OUTPUT);
+	//end of usart code
+
+	adc_init();
+	adc_init2();
+	adc_init3();
+	gfx_mono_init();
+	
+	TimerHandle_t timerPing = xTimerCreate("tPing", 2/portTICK_PERIOD_MS, pdTRUE, (void *) 0, vTimerCallback);
+	
+	xTaskCreate(testLamp,"",500,NULL,1,NULL);
+	xTaskCreate(testLCD,"",500,NULL,1,NULL);
+	xTaskCreate(receivePing,"",500,NULL,1,NULL);
+	xTaskCreate(testLightS,"",500,NULL,1,NULL);
+	xTaskCreate(testTempS,"",500,NULL,1,NULL);
+	xTaskCreate(testServo,"",500,NULL,1,NULL);
+	xTaskCreate(testPot,"",500,NULL,1,NULL);
+	
+	xTimerStart(timerPing, 0);
+	
+	vTaskStartScheduler();
+
+	PWM_Init();
 }
