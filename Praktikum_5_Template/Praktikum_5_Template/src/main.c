@@ -156,108 +156,6 @@ void receiveString()
 }
 // end of usart code
 
-static void adc_init(void)
-{
-	struct adc_config adc_conf;
-	struct adc_channel_config adcch_conf;
-
-	adc_read_configuration(&MY_ADC, &adc_conf);
-	adcch_read_configuration(&MY_ADC, MY_ADC_CH, &adcch_conf);
-
-	adc_set_conversion_parameters(&adc_conf, ADC_SIGN_OFF, ADC_RES_12,ADC_REF_VCC);
-	adc_set_conversion_trigger(&adc_conf, ADC_TRIG_MANUAL, 1, 0);
-	adc_set_clock_rate(&adc_conf, 200000UL);
-
-	adcch_set_input(&adcch_conf, J3_PIN0, ADCCH_NEG_NONE, 1);
-
-	adc_write_configuration(&MY_ADC, &adc_conf);
-	adcch_write_configuration(&MY_ADC, MY_ADC_CH, &adcch_conf);
-}
-
-static void adc_init2(void)
-{
-	struct adc_config adc_conf;
-	struct adc_channel_config adcch_conf;
-
-	adc_read_configuration(&MY_ADC2, &adc_conf);
-	adcch_read_configuration(&MY_ADC2, MY_ADC2_CH, &adcch_conf);
-
-	adc_set_conversion_parameters(&adc_conf, ADC_SIGN_OFF, ADC_RES_12,ADC_REF_VCC);
-	adc_set_conversion_trigger(&adc_conf, ADC_TRIG_MANUAL, 1, 0);
-	adc_set_clock_rate(&adc_conf, 200000UL);
-
-	adcch_set_input(&adcch_conf, J3_PIN1, ADCCH_NEG_NONE, 1);
-
-	adc_write_configuration(&MY_ADC2, &adc_conf);
-	adcch_write_configuration(&MY_ADC2, MY_ADC2_CH, &adcch_conf);
-}
-
-static void adc_init3(void)
-{
-	struct adc_config adc_conf;
-	struct adc_channel_config adcch_conf;
-
-	adc_read_configuration(&MY_ADC3, &adc_conf);
-	adcch_read_configuration(&MY_ADC3, MY_ADC3_CH, &adcch_conf);
-
-	adc_set_conversion_parameters(&adc_conf, ADC_SIGN_OFF, ADC_RES_12,ADC_REF_VCC);
-	adc_set_conversion_trigger(&adc_conf, ADC_TRIG_MANUAL, 1, 0);
-	adc_set_clock_rate(&adc_conf, 200000UL);
-
-	adcch_set_input(&adcch_conf, J3_PIN2, ADCCH_NEG_NONE, 1);
-
-	adc_write_configuration(&MY_ADC3, &adc_conf);
-	adcch_write_configuration(&MY_ADC3, MY_ADC3_CH, &adcch_conf);
-}
-
-static uint16_t adc_read(){
-	uint16_t result;
-	adc_enable(&MY_ADC);
-	adc_start_conversion(&MY_ADC, MY_ADC_CH);
-	adc_wait_for_interrupt_flag(&MY_ADC, MY_ADC_CH);
-	result = adc_get_result(&MY_ADC, MY_ADC_CH);
-	return result;
-}
-
-static uint16_t adc_read2(){
-	uint16_t result;
-	adc_enable(&MY_ADC2);
-	adc_start_conversion(&MY_ADC2, MY_ADC2_CH);
-	adc_wait_for_interrupt_flag(&MY_ADC2, MY_ADC2_CH);
-	result = adc_get_result(&MY_ADC2, MY_ADC2_CH);
-	return result;
-}
-
-static uint16_t adc_read3(){
-	uint16_t result;
-	adc_enable(&MY_ADC3);
-	adc_start_conversion(&MY_ADC3, MY_ADC3_CH);
-	adc_wait_for_interrupt_flag(&MY_ADC3, MY_ADC3_CH);
-	result = adc_get_result(&MY_ADC3, MY_ADC3_CH);
-	return result;
-}
-
-static void on_servo(void){
-	// button untuk lampu manual
-	if(gpio_pin_is_low(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
-		//delay_ms(50);
-		TCC0.CCA = 150;
-		gpio_set_pin_low(LED2_GPIO);
-		gpio_set_pin_high(LED3_GPIO);
-		//door = 1;
-		}else if(gpio_pin_is_low(GPIO_PUSH_BUTTON_2) && gpio_pin_is_high(GPIO_PUSH_BUTTON_1)){
-		TCC0.CCA = 1;
-		gpio_set_pin_low(LED3_GPIO);
-		gpio_set_pin_high(LED2_GPIO);
-		//door = 2;
-		}else if(gpio_pin_is_high(GPIO_PUSH_BUTTON_1) && gpio_pin_is_high(GPIO_PUSH_BUTTON_2)){
-		TCC0.CCA = 375;
-		gpio_set_pin_high(LED3_GPIO);
-		gpio_set_pin_high(LED2_GPIO);
-		//door = 0;
-	}
-}
-
 static portTASK_FUNCTION(testLamp, p_){
 	//ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, false);
 	
@@ -331,14 +229,6 @@ static portTASK_FUNCTION(testTempS, p_){
 	}
 }
 
-static portTASK_FUNCTION(testPot, p_){
-	while(1){
-		result3 = adc_read3();
-		vTaskDelay(10/portTICK_PERIOD_MS);
-	}
-}
-
-
 static portTASK_FUNCTION(testServo, p_){
 	PWM_Init();
 	
@@ -396,9 +286,6 @@ int main (void)
 	ioport_set_pin_dir(J2_PIN0, IOPORT_DIR_OUTPUT);
 	//end of usart code
 
-	adc_init();
-	adc_init2();
-	adc_init3();
 	gfx_mono_init();
 	
 	TimerHandle_t timerPing = xTimerCreate("tPing", 2/portTICK_PERIOD_MS, pdTRUE, (void *) 0, vTimerCallback);
@@ -414,6 +301,4 @@ int main (void)
 	xTimerStart(timerPing, 0);
 	
 	vTaskStartScheduler();
-
-	PWM_Init();
 }
