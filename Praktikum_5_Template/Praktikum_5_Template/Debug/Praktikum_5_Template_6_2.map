@@ -325,6 +325,8 @@ Discarded input sections
  .text          0x00000000        0x0 src/ASF/common/services/clock/xmega/sysclk.o
  .data          0x00000000        0x0 src/ASF/common/services/clock/xmega/sysclk.o
  .bss           0x00000000        0x0 src/ASF/common/services/clock/xmega/sysclk.o
+ .text.sysclk_disable_module
+                0x00000000       0x16 src/ASF/common/services/clock/xmega/sysclk.o
  .text.sysclk_enable_usb
                 0x00000000       0x3c src/ASF/common/services/clock/xmega/sysclk.o
  .text.sysclk_disable_usb
@@ -1016,6 +1018,11 @@ Discarded input sections
  .bss           0x00000000        0x0 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .data.sleepmgr_configs
                 0x00000000        0x6 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_info    0x00000000      0x129 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_abbrev  0x00000000       0x84 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_aranges
+                0x00000000       0x18 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_macro   0x00000000      0x1a3 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .debug_macro   0x00000000      0xa9c src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .debug_macro   0x00000000       0x10 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .debug_macro   0x00000000      0x1c9 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
@@ -1049,6 +1056,10 @@ Discarded input sections
  .debug_macro   0x00000000       0xe4 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .debug_macro   0x00000000       0x10 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .debug_macro   0x00000000       0x42 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_line    0x00000000      0x457 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_str     0x00000000    0x27639 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .comment       0x00000000       0x31 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ COMMON         0x00000000        0x6 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .group         0x00000000        0x8 src/ASF/common/services/spi/xmega_spi/spi_master.o
  .group         0x00000000        0x8 src/ASF/common/services/spi/xmega_spi/spi_master.o
  .group         0x00000000        0x8 src/ASF/common/services/spi/xmega_spi/spi_master.o
@@ -1291,10 +1302,20 @@ Discarded input sections
  .bss           0x00000000        0x0 src/ASF/xmega/drivers/adc/adc.o
  .text.adc_set_callback
                 0x00000000       0x2c src/ASF/xmega/drivers/adc/adc.o
+ .text.adc_enable_clock
+                0x00000000       0x42 src/ASF/xmega/drivers/adc/adc.o
+ .text.adc_disable_clock
+                0x00000000       0x3e src/ASF/xmega/drivers/adc/adc.o
+ .text.adc_enable
+                0x00000000       0x30 src/ASF/xmega/drivers/adc/adc.o
  .text.adc_disable
                 0x00000000       0x28 src/ASF/xmega/drivers/adc/adc.o
  .text.adc_is_enabled
                 0x00000000       0x2e src/ASF/xmega/drivers/adc/adc.o
+ .bss.adcb_enable_count
+                0x00000000        0x1 src/ASF/xmega/drivers/adc/adc.o
+ .bss.adca_enable_count
+                0x00000000        0x1 src/ASF/xmega/drivers/adc/adc.o
  .debug_macro   0x00000000      0xa9c src/ASF/xmega/drivers/adc/adc.o
  .debug_macro   0x00000000       0x10 src/ASF/xmega/drivers/adc/adc.o
  .debug_macro   0x00000000      0x1c9 src/ASF/xmega/drivers/adc/adc.o
@@ -1382,6 +1403,14 @@ Discarded input sections
  .text          0x00000000        0x0 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
  .data          0x00000000        0x0 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
  .bss           0x00000000        0x0 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .text.adc_write_configuration
+                0x00000000       0xac src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .text.adc_read_configuration
+                0x00000000       0x4a src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .text.adcch_write_configuration
+                0x00000000       0x76 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .text.adcch_read_configuration
+                0x00000000       0x76 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
  .debug_macro   0x00000000      0xa9c src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
  .debug_macro   0x00000000       0x10 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
  .debug_macro   0x00000000      0x1c9 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
@@ -1559,7 +1588,15 @@ Discarded input sections
  .text          0x00000000        0x0 src/ASF/xmega/drivers/nvm/nvm_asm.o
  .data          0x00000000        0x0 src/ASF/xmega/drivers/nvm/nvm_asm.o
  .bss           0x00000000        0x0 src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .text.nvm_read_byte
+                0x00000000       0x14 src/ASF/xmega/drivers/nvm/nvm_asm.o
  .BOOT          0x00000000       0x44 src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_line    0x00000000      0x11f src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_info    0x00000000       0xc9 src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_abbrev  0x00000000       0x12 src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_aranges
+                0x00000000       0x28 src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_ranges  0x00000000       0x20 src/ASF/xmega/drivers/nvm/nvm_asm.o
  .group         0x00000000        0x8 src/ASF/xmega/drivers/rtc32/rtc32.o
  .group         0x00000000        0x8 src/ASF/xmega/drivers/rtc32/rtc32.o
  .group         0x00000000        0x8 src/ASF/xmega/drivers/rtc32/rtc32.o
@@ -2560,6 +2597,9 @@ Discarded input sections
                 0x00000000       0x10 src/main.o
  .data.in       0x00000000        0x1 src/main.o
  .bss.door      0x00000000        0x2 src/main.o
+ .bss.result3   0x00000000        0x2 src/main.o
+ .bss.result2   0x00000000        0x2 src/main.o
+ .bss.result    0x00000000        0x2 src/main.o
  .debug_macro   0x00000000      0xa9c src/main.o
  .debug_macro   0x00000000       0x10 src/main.o
  .debug_macro   0x00000000      0x1c9 src/main.o
@@ -2981,7 +3021,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x41f2
+.text           0x00000000     0x3e44
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
                 0x00000000                __vector_default
@@ -3174,323 +3214,296 @@ END GROUP
  .text.sysclk_enable_module
                 0x0000089a       0x18 src/ASF/common/services/clock/xmega/sysclk.o
                 0x0000089a                sysclk_enable_module
- .text.sysclk_disable_module
-                0x000008b2       0x16 src/ASF/common/services/clock/xmega/sysclk.o
-                0x000008b2                sysclk_disable_module
  .text.gfx_mono_st7565r_put_byte
-                0x000008c8      0x14e src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
-                0x000008c8                gfx_mono_st7565r_put_byte
+                0x000008b2      0x14e src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
+                0x000008b2                gfx_mono_st7565r_put_byte
  .text.gfx_mono_st7565r_init
-                0x00000a16       0x84 src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
-                0x00000a16                gfx_mono_st7565r_init
+                0x00000a00       0x84 src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
+                0x00000a00                gfx_mono_st7565r_init
  .text.gfx_mono_st7565r_draw_pixel
-                0x00000a9a       0x6c src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
-                0x00000a9a                gfx_mono_st7565r_draw_pixel
+                0x00000a84       0x6c src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
+                0x00000a84                gfx_mono_st7565r_draw_pixel
  .text.gfx_mono_st7565r_get_byte
-                0x00000b06        0x4 src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
-                0x00000b06                gfx_mono_st7565r_get_byte
+                0x00000af0        0x4 src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
+                0x00000af0                gfx_mono_st7565r_get_byte
  .text.gfx_mono_set_framebuffer
-                0x00000b0a        0xa src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
-                0x00000b0a                gfx_mono_set_framebuffer
+                0x00000af4        0xa src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
+                0x00000af4                gfx_mono_set_framebuffer
  .text.gfx_mono_framebuffer_put_byte
-                0x00000b14       0x1c src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
-                0x00000b14                gfx_mono_framebuffer_put_byte
+                0x00000afe       0x1c src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
+                0x00000afe                gfx_mono_framebuffer_put_byte
  .text.gfx_mono_framebuffer_get_byte
-                0x00000b30       0x1c src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
-                0x00000b30                gfx_mono_framebuffer_get_byte
+                0x00000b1a       0x1c src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
+                0x00000b1a                gfx_mono_framebuffer_get_byte
  .text.gfx_mono_generic_draw_horizontal_line
-                0x00000b4c       0xc4 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
-                0x00000b4c                gfx_mono_generic_draw_horizontal_line
+                0x00000b36       0xc4 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
+                0x00000b36                gfx_mono_generic_draw_horizontal_line
  .text.gfx_mono_generic_draw_filled_rect
-                0x00000c10       0x34 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
-                0x00000c10                gfx_mono_generic_draw_filled_rect
+                0x00000bfa       0x34 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
+                0x00000bfa                gfx_mono_generic_draw_filled_rect
  .text.gfx_mono_draw_char
-                0x00000c44       0xba src/ASF/common/services/gfx_mono/gfx_mono_text.o
-                0x00000c44                gfx_mono_draw_char
+                0x00000c2e       0xba src/ASF/common/services/gfx_mono/gfx_mono_text.o
+                0x00000c2e                gfx_mono_draw_char
  .text.gfx_mono_draw_string
-                0x00000cfe       0x52 src/ASF/common/services/gfx_mono/gfx_mono_text.o
-                0x00000cfe                gfx_mono_draw_string
+                0x00000ce8       0x52 src/ASF/common/services/gfx_mono/gfx_mono_text.o
+                0x00000ce8                gfx_mono_draw_string
  .text.usart_spi_init
-                0x00000d50       0x5e src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
-                0x00000d50                usart_spi_init
+                0x00000d3a       0x5e src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+                0x00000d3a                usart_spi_init
  .text.usart_spi_setup_device
-                0x00000dae       0x34 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
-                0x00000dae                usart_spi_setup_device
+                0x00000d98       0x34 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+                0x00000d98                usart_spi_setup_device
  .text.usart_spi_select_device
-                0x00000de2       0x2c src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
-                0x00000de2                usart_spi_select_device
+                0x00000dcc       0x2c src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+                0x00000dcc                usart_spi_select_device
  .text.usart_spi_deselect_device
-                0x00000e0e       0x2c src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
-                0x00000e0e                usart_spi_deselect_device
- .text.adc_enable_clock
-                0x00000e3a       0x3e src/ASF/xmega/drivers/adc/adc.o
-                0x00000e3a                adc_enable_clock
- .text.adc_disable_clock
-                0x00000e78       0x3a src/ASF/xmega/drivers/adc/adc.o
-                0x00000e78                adc_disable_clock
- .text.adc_enable
-                0x00000eb2       0x2e src/ASF/xmega/drivers/adc/adc.o
-                0x00000eb2                adc_enable
+                0x00000df8       0x2c src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+                0x00000df8                usart_spi_deselect_device
  .text.__vector_71
-                0x00000ee0       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00000ee0                __vector_71
+                0x00000e24       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x00000e24                __vector_71
  .text.__vector_72
-                0x00000f44       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00000f44                __vector_72
+                0x00000e88       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x00000e88                __vector_72
  .text.__vector_73
-                0x00000fa8       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00000fa8                __vector_73
+                0x00000eec       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x00000eec                __vector_73
  .text.__vector_74
-                0x0000100c       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x0000100c                __vector_74
+                0x00000f50       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x00000f50                __vector_74
  .text.__vector_39
-                0x00001070       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00001070                __vector_39
+                0x00000fb4       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x00000fb4                __vector_39
  .text.__vector_40
-                0x000010d4       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x000010d4                __vector_40
+                0x00001018       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x00001018                __vector_40
  .text.__vector_41
-                0x00001138       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00001138                __vector_41
+                0x0000107c       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x0000107c                __vector_41
  .text.__vector_42
-                0x0000119c       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x0000119c                __vector_42
- .text.adc_write_configuration
-                0x00001200       0xa0 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00001200                adc_write_configuration
- .text.adc_read_configuration
-                0x000012a0       0x46 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x000012a0                adc_read_configuration
- .text.adcch_write_configuration
-                0x000012e6       0x72 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x000012e6                adcch_write_configuration
- .text.adcch_read_configuration
-                0x00001358       0x72 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
-                0x00001358                adcch_read_configuration
- .text.nvm_read_byte
-                0x000013ca       0x14 src/ASF/xmega/drivers/nvm/nvm_asm.o
-                0x000013ca                nvm_read_byte
+                0x000010e0       0x64 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x000010e0                __vector_42
  .text.rtc_get_time
-                0x000013de       0x22 src/ASF/xmega/drivers/rtc32/rtc32.o
-                0x000013de                rtc_get_time
+                0x00001144       0x22 src/ASF/xmega/drivers/rtc32/rtc32.o
+                0x00001144                rtc_get_time
  .text.__vector_11
-                0x00001400       0x6a src/ASF/xmega/drivers/rtc32/rtc32.o
-                0x00001400                __vector_11
+                0x00001166       0x6a src/ASF/xmega/drivers/rtc32/rtc32.o
+                0x00001166                __vector_11
  .text.usart_getchar
-                0x0000146a        0xc src/ASF/xmega/drivers/usart/usart.o
-                0x0000146a                usart_getchar
+                0x000011d0        0xc src/ASF/xmega/drivers/usart/usart.o
+                0x000011d0                usart_getchar
  .text.usart_set_baudrate
-                0x00001476      0x226 src/ASF/xmega/drivers/usart/usart.o
-                0x00001476                usart_set_baudrate
+                0x000011dc      0x226 src/ASF/xmega/drivers/usart/usart.o
+                0x000011dc                usart_set_baudrate
  .text.usart_init_rs232
-                0x0000169c      0x222 src/ASF/xmega/drivers/usart/usart.o
-                0x0000169c                usart_init_rs232
+                0x00001402      0x222 src/ASF/xmega/drivers/usart/usart.o
+                0x00001402                usart_init_rs232
  .text.usart_spi_set_baudrate
-                0x000018be       0x64 src/ASF/xmega/drivers/usart/usart.o
-                0x000018be                usart_spi_set_baudrate
+                0x00001624       0x64 src/ASF/xmega/drivers/usart/usart.o
+                0x00001624                usart_spi_set_baudrate
  .text.usart_init_spi
-                0x00001922      0x374 src/ASF/xmega/drivers/usart/usart.o
-                0x00001922                usart_init_spi
+                0x00001688      0x33a src/ASF/xmega/drivers/usart/usart.o
+                0x00001688                usart_init_spi
  .text.vListInitialise
-                0x00001c96       0x1c src/FreeRTOS/list.o
-                0x00001c96                vListInitialise
+                0x000019c2       0x1c src/FreeRTOS/list.o
+                0x000019c2                vListInitialise
  .text.vListInitialiseItem
-                0x00001cb2        0x8 src/FreeRTOS/list.o
-                0x00001cb2                vListInitialiseItem
+                0x000019de        0x8 src/FreeRTOS/list.o
+                0x000019de                vListInitialiseItem
  .text.vListInsertEnd
-                0x00001cba       0x42 src/FreeRTOS/list.o
-                0x00001cba                vListInsertEnd
+                0x000019e6       0x42 src/FreeRTOS/list.o
+                0x000019e6                vListInsertEnd
  .text.vListInsert
-                0x00001cfc       0x62 src/FreeRTOS/list.o
-                0x00001cfc                vListInsert
+                0x00001a28       0x62 src/FreeRTOS/list.o
+                0x00001a28                vListInsert
  .text.uxListRemove
-                0x00001d5e       0x4c src/FreeRTOS/list.o
-                0x00001d5e                uxListRemove
+                0x00001a8a       0x4c src/FreeRTOS/list.o
+                0x00001a8a                uxListRemove
  .text.pxPortInitialiseStack
-                0x00001daa       0xee src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
-                0x00001daa                pxPortInitialiseStack
+                0x00001ad6       0xee src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+                0x00001ad6                pxPortInitialiseStack
  .text.xPortStartScheduler
-                0x00001e98       0x8a src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
-                0x00001e98                xPortStartScheduler
+                0x00001bc4       0x8a src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+                0x00001bc4                xPortStartScheduler
  .text.vPortYield
-                0x00001f22       0xb0 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
-                0x00001f22                vPortYield
+                0x00001c4e       0xb0 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+                0x00001c4e                vPortYield
  .text.__vector_14
-                0x00001fd2       0xb4 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
-                0x00001fd2                __vector_14
+                0x00001cfe       0xb4 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+                0x00001cfe                __vector_14
  .text.pvPortMalloc
-                0x00002086       0x1a src/FreeRTOS/portable/MemMang/heap_3.o
-                0x00002086                pvPortMalloc
+                0x00001db2       0x1a src/FreeRTOS/portable/MemMang/heap_3.o
+                0x00001db2                pvPortMalloc
  .text.vPortFree
-                0x000020a0       0x1a src/FreeRTOS/portable/MemMang/heap_3.o
-                0x000020a0                vPortFree
+                0x00001dcc       0x1a src/FreeRTOS/portable/MemMang/heap_3.o
+                0x00001dcc                vPortFree
  .text.prvCopyDataToQueue
-                0x000020ba       0x96 src/FreeRTOS/queue.o
+                0x00001de6       0x96 src/FreeRTOS/queue.o
  .text.prvCopyDataFromQueue
-                0x00002150       0x34 src/FreeRTOS/queue.o
+                0x00001e7c       0x34 src/FreeRTOS/queue.o
  .text.prvUnlockQueue
-                0x00002184       0x90 src/FreeRTOS/queue.o
+                0x00001eb0       0x90 src/FreeRTOS/queue.o
  .text.xQueueGenericReset
-                0x00002214       0x72 src/FreeRTOS/queue.o
-                0x00002214                xQueueGenericReset
+                0x00001f40       0x72 src/FreeRTOS/queue.o
+                0x00001f40                xQueueGenericReset
  .text.xQueueGenericCreate
-                0x00002286       0x52 src/FreeRTOS/queue.o
-                0x00002286                xQueueGenericCreate
+                0x00001fb2       0x52 src/FreeRTOS/queue.o
+                0x00001fb2                xQueueGenericCreate
  .text.xQueueGenericSend
-                0x000022d8      0x11a src/FreeRTOS/queue.o
-                0x000022d8                xQueueGenericSend
+                0x00002004      0x11a src/FreeRTOS/queue.o
+                0x00002004                xQueueGenericSend
  .text.xQueueGenericSendFromISR
-                0x000023f2       0x6c src/FreeRTOS/queue.o
-                0x000023f2                xQueueGenericSendFromISR
+                0x0000211e       0x6c src/FreeRTOS/queue.o
+                0x0000211e                xQueueGenericSendFromISR
  .text.xQueueGenericReceive
-                0x0000245e      0x12e src/FreeRTOS/queue.o
-                0x0000245e                xQueueGenericReceive
+                0x0000218a      0x12e src/FreeRTOS/queue.o
+                0x0000218a                xQueueGenericReceive
  .text.vQueueWaitForMessageRestricted
-                0x0000258c       0x36 src/FreeRTOS/queue.o
-                0x0000258c                vQueueWaitForMessageRestricted
+                0x000022b8       0x36 src/FreeRTOS/queue.o
+                0x000022b8                vQueueWaitForMessageRestricted
  .text.prvIdleTask
-                0x000025c2        0xe src/FreeRTOS/tasks.o
+                0x000022ee        0xe src/FreeRTOS/tasks.o
  .text.prvAddCurrentTaskToDelayedList
-                0x000025d0       0x6a src/FreeRTOS/tasks.o
+                0x000022fc       0x6a src/FreeRTOS/tasks.o
  .text.xTaskGenericCreate
-                0x0000263a      0x202 src/FreeRTOS/tasks.o
-                0x0000263a                xTaskGenericCreate
+                0x00002366      0x202 src/FreeRTOS/tasks.o
+                0x00002366                xTaskGenericCreate
  .text.vTaskStartScheduler
-                0x0000283c       0x66 src/FreeRTOS/tasks.o
-                0x0000283c                vTaskStartScheduler
+                0x00002568       0x66 src/FreeRTOS/tasks.o
+                0x00002568                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x000028a2        0xc src/FreeRTOS/tasks.o
-                0x000028a2                vTaskSuspendAll
+                0x000025ce        0xc src/FreeRTOS/tasks.o
+                0x000025ce                vTaskSuspendAll
  .text.xTaskGetTickCount
-                0x000028ae       0x14 src/FreeRTOS/tasks.o
-                0x000028ae                xTaskGetTickCount
+                0x000025da       0x14 src/FreeRTOS/tasks.o
+                0x000025da                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x000028c2      0x1a6 src/FreeRTOS/tasks.o
-                0x000028c2                xTaskIncrementTick
+                0x000025ee      0x1a6 src/FreeRTOS/tasks.o
+                0x000025ee                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x00002a68       0xfa src/FreeRTOS/tasks.o
-                0x00002a68                xTaskResumeAll
+                0x00002794       0xfa src/FreeRTOS/tasks.o
+                0x00002794                xTaskResumeAll
  .text.vTaskDelay
-                0x00002b62       0x36 src/FreeRTOS/tasks.o
-                0x00002b62                vTaskDelay
+                0x0000288e       0x36 src/FreeRTOS/tasks.o
+                0x0000288e                vTaskDelay
  .text.vTaskSwitchContext
-                0x00002b98       0xda src/FreeRTOS/tasks.o
-                0x00002b98                vTaskSwitchContext
+                0x000028c4       0xda src/FreeRTOS/tasks.o
+                0x000028c4                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x00002c72       0x34 src/FreeRTOS/tasks.o
-                0x00002c72                vTaskPlaceOnEventList
+                0x0000299e       0x34 src/FreeRTOS/tasks.o
+                0x0000299e                vTaskPlaceOnEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x00002ca6       0x34 src/FreeRTOS/tasks.o
-                0x00002ca6                vTaskPlaceOnEventListRestricted
+                0x000029d2       0x34 src/FreeRTOS/tasks.o
+                0x000029d2                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x00002cda       0x8c src/FreeRTOS/tasks.o
-                0x00002cda                xTaskRemoveFromEventList
+                0x00002a06       0x8c src/FreeRTOS/tasks.o
+                0x00002a06                xTaskRemoveFromEventList
  .text.vTaskSetTimeOutState
-                0x00002d66       0x16 src/FreeRTOS/tasks.o
-                0x00002d66                vTaskSetTimeOutState
+                0x00002a92       0x16 src/FreeRTOS/tasks.o
+                0x00002a92                vTaskSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x00002d7c       0x62 src/FreeRTOS/tasks.o
-                0x00002d7c                xTaskCheckForTimeOut
+                0x00002aa8       0x62 src/FreeRTOS/tasks.o
+                0x00002aa8                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x00002dde        0x8 src/FreeRTOS/tasks.o
-                0x00002dde                vTaskMissedYield
+                0x00002b0a        0x8 src/FreeRTOS/tasks.o
+                0x00002b0a                vTaskMissedYield
  .text.xTaskGetSchedulerState
-                0x00002de6       0x1c src/FreeRTOS/tasks.o
-                0x00002de6                xTaskGetSchedulerState
+                0x00002b12       0x1c src/FreeRTOS/tasks.o
+                0x00002b12                xTaskGetSchedulerState
  .text.prvInsertTimerInActiveList
-                0x00002e02       0x5e src/FreeRTOS/timers.o
+                0x00002b2e       0x5e src/FreeRTOS/timers.o
  .text.prvCheckForValidListAndQueue
-                0x00002e60       0x50 src/FreeRTOS/timers.o
+                0x00002b8c       0x50 src/FreeRTOS/timers.o
  .text.xTimerCreateTimerTask
-                0x00002eb0       0x50 src/FreeRTOS/timers.o
-                0x00002eb0                xTimerCreateTimerTask
+                0x00002bdc       0x50 src/FreeRTOS/timers.o
+                0x00002bdc                xTimerCreateTimerTask
  .text.xTimerCreate
-                0x00002f00       0x6c src/FreeRTOS/timers.o
-                0x00002f00                xTimerCreate
+                0x00002c2c       0x6c src/FreeRTOS/timers.o
+                0x00002c2c                xTimerCreate
  .text.xTimerGenericCommand
-                0x00002f6c       0x84 src/FreeRTOS/timers.o
-                0x00002f6c                xTimerGenericCommand
+                0x00002c98       0x84 src/FreeRTOS/timers.o
+                0x00002c98                xTimerGenericCommand
  .text.prvSampleTimeNow
-                0x00002ff0       0xdc src/FreeRTOS/timers.o
+                0x00002d1c       0xdc src/FreeRTOS/timers.o
  .text.prvTimerTask
-                0x000030cc      0x1b6 src/FreeRTOS/timers.o
+                0x00002df8      0x1b6 src/FreeRTOS/timers.o
  .text.ioport_configure_port_pin
-                0x00003282       0x4e src/ASF/common/services/ioport/xmega/ioport_compat.o
-                0x00003282                ioport_configure_port_pin
+                0x00002fae       0x4e src/ASF/common/services/ioport/xmega/ioport_compat.o
+                0x00002fae                ioport_configure_port_pin
  .text.board_init
-                0x000032d0      0x13a src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
-                0x000032d0                board_init
+                0x00002ffc      0x13a src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+                0x00002ffc                board_init
  .text.vTimerCallback
-                0x0000340a       0x28 src/main.o
-                0x0000340a                vTimerCallback
+                0x00003136       0x28 src/main.o
+                0x00003136                vTimerCallback
  .text.testLamp
-                0x00003432       0x5e src/main.o
- .text.testPot  0x00003490       0x3e src/main.o
- .text.testTempS
-                0x000034ce       0x3e src/main.o
- .text.testLightS
-                0x0000350c       0x34 src/main.o
- .text.testLCD  0x00003540       0x92 src/main.o
+                0x0000315e       0x84 src/main.o
+ .text.testLCD  0x000031e2       0xcc src/main.o
  .text.PWM_Init
-                0x000035d2       0x28 src/main.o
-                0x000035d2                PWM_Init
+                0x000032ae       0x28 src/main.o
+                0x000032ae                PWM_Init
  .text.testServo
-                0x000035fa       0x78 src/main.o
+                0x000032d6       0x78 src/main.o
  .text.setUpSerial
-                0x00003672       0x1c src/main.o
-                0x00003672                setUpSerial
+                0x0000334e       0x30 src/main.o
+                0x0000334e                setUpSerial
  .text.receiveString
-                0x0000368e       0x42 src/main.o
-                0x0000368e                receiveString
+                0x0000337e       0x64 src/main.o
+                0x0000337e                receiveString
  .text.receivePing
-                0x000036d0        0xa src/main.o
- .text.main     0x000036da      0x252 src/main.o
-                0x000036da                main
+                0x000033e2        0xa src/main.o
+ .text.receiveStringE
+                0x000033ec       0x64 src/main.o
+                0x000033ec                receiveStringE
+ .text.receivePingE
+                0x00003450        0xa src/main.o
+ .text.main     0x0000345a      0x124 src/main.o
+                0x0000345a                main
  .text.libgcc.div
-                0x0000392c       0x26 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_divmodhi4.o)
-                0x0000392c                _div
-                0x0000392c                __divmodhi4
+                0x0000357e       0x26 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_divmodhi4.o)
+                0x0000357e                _div
+                0x0000357e                __divmodhi4
  .text.libgcc.div
-                0x00003952       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodsi4.o)
-                0x00003952                __udivmodsi4
- .text.libgcc   0x00003996       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_tablejump2.o)
-                0x00003996                __tablejump2__
+                0x000035a4       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodsi4.o)
+                0x000035a4                __udivmodsi4
+ .text.libgcc   0x000035e8       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_tablejump2.o)
+                0x000035e8                __tablejump2__
  .text.libgcc.div
-                0x000039a6       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodhi4.o)
-                0x000039a6                __udivmodhi4
+                0x000035f8       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodhi4.o)
+                0x000035f8                __udivmodhi4
  .text.avr-libc
-                0x000039ce      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(malloc.o)
-                0x000039ce                malloc
-                0x00003afe                free
+                0x00003620      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(malloc.o)
+                0x00003620                malloc
+                0x00003750                free
  .text.avr-libc
-                0x00003c10       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memcpy.o)
-                0x00003c10                memcpy
+                0x00003862       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memcpy.o)
+                0x00003862                memcpy
  .text.avr-libc
-                0x00003c22       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strcmp.o)
-                0x00003c22                strcmp
+                0x00003874       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strcmp.o)
+                0x00003874                strcmp
  .text.avr-libc
-                0x00003c34       0x6c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(snprintf.o)
-                0x00003c34                snprintf
+                0x00003886       0x6c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(snprintf.o)
+                0x00003886                snprintf
  .text.avr-libc
-                0x00003ca0      0x3ee c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(vfprintf_std.o)
-                0x00003ca0                vfprintf
+                0x000038f2      0x3ee c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(vfprintf_std.o)
+                0x000038f2                vfprintf
  .text.avr-libc
-                0x0000408e       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strnlen_P.o)
-                0x0000408e                strnlen_P
+                0x00003ce0       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strnlen_P.o)
+                0x00003ce0                strnlen_P
  .text.avr-libc
-                0x000040a4       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strnlen.o)
-                0x000040a4                strnlen
+                0x00003cf6       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strnlen.o)
+                0x00003cf6                strnlen
  .text.avr-libc
-                0x000040ba       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(fputc.o)
-                0x000040ba                fputc
+                0x00003d0c       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(fputc.o)
+                0x00003d0c                fputc
  .text.avr-libc
-                0x00004132       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(ultoa_invert.o)
-                0x00004132                __ultoa_invert
-                0x000041ee                . = ALIGN (0x2)
+                0x00003d84       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(ultoa_invert.o)
+                0x00003d84                __ultoa_invert
+                0x00003e40                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000041ee        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
-                0x000041ee                _exit
-                0x000041ee                exit
+ .fini9         0x00003e40        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+                0x00003e40                _exit
+                0x00003e40                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -3509,11 +3522,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000041ee        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+ .fini0         0x00003e40        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000041f2                _etext = .
+                0x00003e44                _etext = .
 
-.data           0x00802000       0x4e load address 0x000041f2
+.data           0x00802000       0x62 load address 0x00003e44
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00802000        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(malloc.o)
@@ -3523,119 +3536,113 @@ END GROUP
  *(.data*)
  .data.sysfont  0x00802006        0x7 src/ASF/common/services/gfx_mono/sysfont.o
                 0x00802006                sysfont
- .data.USART_SERIAL_OPTIONS.6601
+ .data.USART_SERIAL_OPTIONS.6560
                 0x0080200d        0x7 src/main.o
- .data.str1     0x00802014        0x2 src/main.o
-                0x00802014                str1
+ .data.str2     0x00802014        0x2 src/main.o
+                0x00802014                str2
+ .data.str1     0x00802016        0x2 src/main.o
+                0x00802016                str1
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00802016        0x5 src/FreeRTOS/tasks.o
+                0x00802018        0x5 src/FreeRTOS/tasks.o
  .rodata.str1.1
-                0x0080201b        0x8 src/FreeRTOS/timers.o
+                0x0080201d        0x8 src/FreeRTOS/timers.o
  .rodata.str1.1
-                0x00802023       0x2b src/main.o
-                                 0x2c (size before relaxing)
+                0x00802025       0x3c src/main.o
+                                 0x3d (size before relaxing)
  *(.gnu.linkonce.d*)
-                0x0080204e                . = ALIGN (0x2)
-                0x0080204e                _edata = .
-                0x0080204e                PROVIDE (__data_end, .)
+                0x00802062                . = ALIGN (0x2)
+ *fill*         0x00802061        0x1 
+                0x00802062                _edata = .
+                0x00802062                PROVIDE (__data_end, .)
 
-.bss            0x0080204e      0x3c3
-                0x0080204e                PROVIDE (__bss_start, .)
+.bss            0x00802062      0x41b
+                0x00802062                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.framebuffer
-                0x0080204e      0x200 src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
+                0x00802062      0x200 src/ASF/common/services/gfx_mono/gfx_mono_c12832_a1z.o
  .bss.fbpointer
-                0x0080224e        0x2 src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
- .bss.adcb_enable_count
-                0x00802250        0x1 src/ASF/xmega/drivers/adc/adc.o
- .bss.adca_enable_count
-                0x00802251        0x1 src/ASF/xmega/drivers/adc/adc.o
+                0x00802262        0x2 src/ASF/common/services/gfx_mono/gfx_mono_framebuffer.o
  .bss.uxSchedulerSuspended
-                0x00802252        0x1 src/FreeRTOS/tasks.o
+                0x00802264        0x1 src/FreeRTOS/tasks.o
  .bss.xNextTaskUnblockTime
-                0x00802253        0x2 src/FreeRTOS/tasks.o
+                0x00802265        0x2 src/FreeRTOS/tasks.o
  .bss.uxTaskNumber
-                0x00802255        0x1 src/FreeRTOS/tasks.o
+                0x00802267        0x1 src/FreeRTOS/tasks.o
  .bss.xNumOfOverflows
-                0x00802256        0x1 src/FreeRTOS/tasks.o
+                0x00802268        0x1 src/FreeRTOS/tasks.o
  .bss.xYieldPending
-                0x00802257        0x1 src/FreeRTOS/tasks.o
+                0x00802269        0x1 src/FreeRTOS/tasks.o
  .bss.uxPendedTicks
-                0x00802258        0x1 src/FreeRTOS/tasks.o
+                0x0080226a        0x1 src/FreeRTOS/tasks.o
  .bss.xSchedulerRunning
-                0x00802259        0x1 src/FreeRTOS/tasks.o
+                0x0080226b        0x1 src/FreeRTOS/tasks.o
  .bss.uxTopReadyPriority
-                0x0080225a        0x1 src/FreeRTOS/tasks.o
+                0x0080226c        0x1 src/FreeRTOS/tasks.o
  .bss.xTickCount
-                0x0080225b        0x2 src/FreeRTOS/tasks.o
+                0x0080226d        0x2 src/FreeRTOS/tasks.o
  .bss.uxCurrentNumberOfTasks
-                0x0080225d        0x1 src/FreeRTOS/tasks.o
+                0x0080226f        0x1 src/FreeRTOS/tasks.o
  .bss.xPendingReadyList
-                0x0080225e        0x9 src/FreeRTOS/tasks.o
+                0x00802270        0x9 src/FreeRTOS/tasks.o
  .bss.pxOverflowDelayedTaskList
-                0x00802267        0x2 src/FreeRTOS/tasks.o
+                0x00802279        0x2 src/FreeRTOS/tasks.o
  .bss.pxDelayedTaskList
-                0x00802269        0x2 src/FreeRTOS/tasks.o
+                0x0080227b        0x2 src/FreeRTOS/tasks.o
  .bss.xDelayedTaskList2
-                0x0080226b        0x9 src/FreeRTOS/tasks.o
+                0x0080227d        0x9 src/FreeRTOS/tasks.o
  .bss.xDelayedTaskList1
-                0x00802274        0x9 src/FreeRTOS/tasks.o
+                0x00802286        0x9 src/FreeRTOS/tasks.o
  .bss.pxReadyTasksLists
-                0x0080227d       0x2d src/FreeRTOS/tasks.o
+                0x0080228f       0x2d src/FreeRTOS/tasks.o
  .bss.pxCurrentTCB
-                0x008022aa        0x2 src/FreeRTOS/tasks.o
-                0x008022aa                pxCurrentTCB
+                0x008022bc        0x2 src/FreeRTOS/tasks.o
+                0x008022bc                pxCurrentTCB
  .bss.xLastTime.4459
-                0x008022ac        0x2 src/FreeRTOS/timers.o
+                0x008022be        0x2 src/FreeRTOS/timers.o
  .bss.xTimerQueue
-                0x008022ae        0x2 src/FreeRTOS/timers.o
+                0x008022c0        0x2 src/FreeRTOS/timers.o
  .bss.pxOverflowTimerList
-                0x008022b0        0x2 src/FreeRTOS/timers.o
+                0x008022c2        0x2 src/FreeRTOS/timers.o
  .bss.pxCurrentTimerList
-                0x008022b2        0x2 src/FreeRTOS/timers.o
+                0x008022c4        0x2 src/FreeRTOS/timers.o
  .bss.xActiveTimerList2
-                0x008022b4        0x9 src/FreeRTOS/timers.o
+                0x008022c6        0x9 src/FreeRTOS/timers.o
  .bss.xActiveTimerList1
-                0x008022bd        0x9 src/FreeRTOS/timers.o
- .bss.waiting   0x008022c6        0x2 src/main.o
-                0x008022c6                waiting
- .bss.reads     0x008022c8       0x64 src/main.o
- .bss.orang     0x0080232c        0x2 src/main.o
-                0x0080232c                orang
- .bss.strbuf    0x0080232e       0xc9 src/main.o
+                0x008022cf        0x9 src/FreeRTOS/timers.o
+ .bss.empty     0x008022d8        0x2 src/main.o
+                0x008022d8                empty
+ .bss.waiting   0x008022da        0x2 src/main.o
+                0x008022da                waiting
+ .bss.readse    0x008022dc       0x64 src/main.o
+ .bss.reads     0x00802340       0x64 src/main.o
+ .bss.orang     0x008023a4        0x2 src/main.o
+                0x008023a4                orang
+ .bss.strbuf    0x008023a6       0xc9 src/main.o
  .bss.increment
-                0x008023f7        0x4 src/main.o
-                0x008023f7                increment
- .bss.result3   0x008023fb        0x2 src/main.o
-                0x008023fb                result3
- .bss.result2   0x008023fd        0x2 src/main.o
-                0x008023fd                result2
- .bss.result    0x008023ff        0x2 src/main.o
-                0x008023ff                result
+                0x0080246f        0x4 src/main.o
+                0x0080246f                increment
  *(COMMON)
- COMMON         0x00802401        0x6 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
-                0x00802401                sleepmgr_locks
- COMMON         0x00802407        0x4 src/ASF/xmega/drivers/adc/adc.o
-                0x00802407                adcb_callback
-                0x00802409                adca_callback
- COMMON         0x0080240b        0x2 src/ASF/xmega/drivers/rtc32/rtc32.o
-                0x0080240b                rtc_data
- COMMON         0x0080240d        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(malloc.o)
-                0x0080240d                __brkval
-                0x0080240f                __flp
-                0x00802411                PROVIDE (__bss_end, .)
-                0x000041f2                __data_load_start = LOADADDR (.data)
-                0x00004240                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00802473        0x4 src/ASF/xmega/drivers/adc/adc.o
+                0x00802473                adcb_callback
+                0x00802475                adca_callback
+ COMMON         0x00802477        0x2 src/ASF/xmega/drivers/rtc32/rtc32.o
+                0x00802477                rtc_data
+ COMMON         0x00802479        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(malloc.o)
+                0x00802479                __brkval
+                0x0080247b                __flp
+                0x0080247d                PROVIDE (__bss_end, .)
+                0x00003e44                __data_load_start = LOADADDR (.data)
+                0x00003ea6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00802411        0x0
+.noinit         0x0080247d        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00802411                _end = .
-                0x00802411                PROVIDE (__heap_start, .)
+                0x0080247d                _end = .
+                0x0080247d                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -3684,7 +3691,6 @@ END GROUP
  .comment       0x00000030       0x31 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
  .comment       0x00000030       0x31 src/ASF/common/services/gfx_mono/gfx_mono_text.o
  .comment       0x00000030       0x31 src/ASF/common/services/gfx_mono/sysfont.o
- .comment       0x00000030       0x31 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
  .comment       0x00000030       0x31 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
  .comment       0x00000030       0x31 src/ASF/xmega/drivers/adc/adc.o
  .comment       0x00000030       0x31 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
@@ -3725,7 +3731,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x760
+.debug_aranges  0x00000000      0x718
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 src/ASF/common/components/display/st7565r/st7565r.o
@@ -3742,42 +3748,38 @@ END GROUP
  .debug_aranges
                 0x000001b8       0x18 src/ASF/common/services/gfx_mono/sysfont.o
  .debug_aranges
-                0x000001d0       0x18 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+                0x000001d0       0x48 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
  .debug_aranges
-                0x000001e8       0x48 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+                0x00000218       0x48 src/ASF/xmega/drivers/adc/adc.o
  .debug_aranges
-                0x00000230       0x48 src/ASF/xmega/drivers/adc/adc.o
+                0x00000260       0x78 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
  .debug_aranges
-                0x00000278       0x78 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+                0x000002d8       0x60 src/ASF/xmega/drivers/rtc32/rtc32.o
  .debug_aranges
-                0x000002f0       0x28 src/ASF/xmega/drivers/nvm/nvm_asm.o
+                0x00000338       0x58 src/ASF/xmega/drivers/usart/usart.o
  .debug_aranges
-                0x00000318       0x60 src/ASF/xmega/drivers/rtc32/rtc32.o
+                0x00000390       0x40 src/FreeRTOS/list.o
  .debug_aranges
-                0x00000378       0x58 src/ASF/xmega/drivers/usart/usart.o
+                0x000003d0       0x38 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
  .debug_aranges
-                0x000003d0       0x40 src/FreeRTOS/list.o
+                0x00000408       0x28 src/FreeRTOS/portable/MemMang/heap_3.o
  .debug_aranges
-                0x00000410       0x38 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+                0x00000430       0xa8 src/FreeRTOS/queue.o
  .debug_aranges
-                0x00000448       0x28 src/FreeRTOS/portable/MemMang/heap_3.o
+                0x000004d8      0x108 src/FreeRTOS/tasks.o
  .debug_aranges
-                0x00000470       0xa8 src/FreeRTOS/queue.o
+                0x000005e0       0x70 src/FreeRTOS/timers.o
  .debug_aranges
-                0x00000518      0x108 src/FreeRTOS/tasks.o
+                0x00000650       0x20 src/ASF/common/services/ioport/xmega/ioport_compat.o
  .debug_aranges
-                0x00000620       0x70 src/FreeRTOS/timers.o
+                0x00000670       0x20 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
  .debug_aranges
-                0x00000690       0x20 src/ASF/common/services/ioport/xmega/ioport_compat.o
- .debug_aranges
-                0x000006b0       0x20 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_aranges
-                0x000006d0       0x90 src/main.o
+                0x00000690       0x88 src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x16463
+.debug_info     0x00000000    0x1510d
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x3379 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_info    0x00003379     0x1945 src/ASF/common/components/display/st7565r/st7565r.o
@@ -3787,24 +3789,22 @@ END GROUP
  .debug_info    0x00007647      0xc10 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
  .debug_info    0x00008257      0x71b src/ASF/common/services/gfx_mono/gfx_mono_text.o
  .debug_info    0x00008972      0x1af src/ASF/common/services/gfx_mono/sysfont.o
- .debug_info    0x00008b21      0x129 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
- .debug_info    0x00008c4a      0xb7e src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
- .debug_info    0x000097c8      0xa9b src/ASF/xmega/drivers/adc/adc.o
- .debug_info    0x0000a263      0xe8e src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
- .debug_info    0x0000b0f1       0xc9 src/ASF/xmega/drivers/nvm/nvm_asm.o
- .debug_info    0x0000b1ba      0x720 src/ASF/xmega/drivers/rtc32/rtc32.o
- .debug_info    0x0000b8da     0x2ce7 src/ASF/xmega/drivers/usart/usart.o
- .debug_info    0x0000e5c1      0x2d1 src/FreeRTOS/list.o
- .debug_info    0x0000e892      0x9ff src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
- .debug_info    0x0000f291      0x175 src/FreeRTOS/portable/MemMang/heap_3.o
- .debug_info    0x0000f406      0xf92 src/FreeRTOS/queue.o
- .debug_info    0x00010398     0x1672 src/FreeRTOS/tasks.o
- .debug_info    0x00011a0a      0xe70 src/FreeRTOS/timers.o
- .debug_info    0x0001287a      0x121 src/ASF/common/services/ioport/xmega/ioport_compat.o
- .debug_info    0x0001299b      0xaeb src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_info    0x00013486     0x2fdd src/main.o
+ .debug_info    0x00008b21      0xb7e src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+ .debug_info    0x0000969f      0xa9b src/ASF/xmega/drivers/adc/adc.o
+ .debug_info    0x0000a13a      0xe8e src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .debug_info    0x0000afc8      0x720 src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_info    0x0000b6e8     0x2ce7 src/ASF/xmega/drivers/usart/usart.o
+ .debug_info    0x0000e3cf      0x2d1 src/FreeRTOS/list.o
+ .debug_info    0x0000e6a0      0x9ff src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_info    0x0000f09f      0x175 src/FreeRTOS/portable/MemMang/heap_3.o
+ .debug_info    0x0000f214      0xf92 src/FreeRTOS/queue.o
+ .debug_info    0x000101a6     0x1672 src/FreeRTOS/tasks.o
+ .debug_info    0x00011818      0xe70 src/FreeRTOS/timers.o
+ .debug_info    0x00012688      0x121 src/ASF/common/services/ioport/xmega/ioport_compat.o
+ .debug_info    0x000127a9      0xaeb src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_info    0x00013294     0x1e79 src/main.o
 
-.debug_abbrev   0x00000000     0x6238
+.debug_abbrev   0x00000000     0x6134
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x30c4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_abbrev  0x000030c4      0x2a0 src/ASF/common/components/display/st7565r/st7565r.o
@@ -3814,24 +3814,22 @@ END GROUP
  .debug_abbrev  0x00003a6c      0x1ac src/ASF/common/services/gfx_mono/gfx_mono_generic.o
  .debug_abbrev  0x00003c18      0x21c src/ASF/common/services/gfx_mono/gfx_mono_text.o
  .debug_abbrev  0x00003e34       0xe2 src/ASF/common/services/gfx_mono/sysfont.o
- .debug_abbrev  0x00003f16       0x84 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
- .debug_abbrev  0x00003f9a      0x2d8 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
- .debug_abbrev  0x00004272      0x2d6 src/ASF/xmega/drivers/adc/adc.o
- .debug_abbrev  0x00004548      0x335 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
- .debug_abbrev  0x0000487d       0x12 src/ASF/xmega/drivers/nvm/nvm_asm.o
- .debug_abbrev  0x0000488f      0x2ed src/ASF/xmega/drivers/rtc32/rtc32.o
- .debug_abbrev  0x00004b7c      0x3f5 src/ASF/xmega/drivers/usart/usart.o
- .debug_abbrev  0x00004f71       0xfb src/FreeRTOS/list.o
- .debug_abbrev  0x0000506c      0x1b3 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
- .debug_abbrev  0x0000521f       0xdc src/FreeRTOS/portable/MemMang/heap_3.o
- .debug_abbrev  0x000052fb      0x252 src/FreeRTOS/queue.o
- .debug_abbrev  0x0000554d      0x2ff src/FreeRTOS/tasks.o
- .debug_abbrev  0x0000584c      0x2e8 src/FreeRTOS/timers.o
- .debug_abbrev  0x00005b34       0x95 src/ASF/common/services/ioport/xmega/ioport_compat.o
- .debug_abbrev  0x00005bc9      0x14a src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_abbrev  0x00005d13      0x525 src/main.o
+ .debug_abbrev  0x00003f16      0x2d8 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+ .debug_abbrev  0x000041ee      0x2d6 src/ASF/xmega/drivers/adc/adc.o
+ .debug_abbrev  0x000044c4      0x335 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .debug_abbrev  0x000047f9      0x2ed src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_abbrev  0x00004ae6      0x3f5 src/ASF/xmega/drivers/usart/usart.o
+ .debug_abbrev  0x00004edb       0xfb src/FreeRTOS/list.o
+ .debug_abbrev  0x00004fd6      0x1b3 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_abbrev  0x00005189       0xdc src/FreeRTOS/portable/MemMang/heap_3.o
+ .debug_abbrev  0x00005265      0x252 src/FreeRTOS/queue.o
+ .debug_abbrev  0x000054b7      0x2ff src/FreeRTOS/tasks.o
+ .debug_abbrev  0x000057b6      0x2e8 src/FreeRTOS/timers.o
+ .debug_abbrev  0x00005a9e       0x95 src/ASF/common/services/ioport/xmega/ioport_compat.o
+ .debug_abbrev  0x00005b33      0x14a src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_abbrev  0x00005c7d      0x4b7 src/main.o
 
-.debug_line     0x00000000     0xc1b5
+.debug_line     0x00000000     0xba61
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x39d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_line    0x0000039d      0xac1 src/ASF/common/components/display/st7565r/st7565r.o
@@ -3841,24 +3839,22 @@ END GROUP
  .debug_line    0x00002b25      0xc05 src/ASF/common/services/gfx_mono/gfx_mono_generic.o
  .debug_line    0x0000372a      0x9a2 src/ASF/common/services/gfx_mono/gfx_mono_text.o
  .debug_line    0x000040cc      0x7c2 src/ASF/common/services/gfx_mono/sysfont.o
- .debug_line    0x0000488e      0x457 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
- .debug_line    0x00004ce5      0x7d6 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
- .debug_line    0x000054bb      0x789 src/ASF/xmega/drivers/adc/adc.o
- .debug_line    0x00005c44      0x95d src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
- .debug_line    0x000065a1      0x11f src/ASF/xmega/drivers/nvm/nvm_asm.o
- .debug_line    0x000066c0      0x792 src/ASF/xmega/drivers/rtc32/rtc32.o
- .debug_line    0x00006e52      0xc93 src/ASF/xmega/drivers/usart/usart.o
- .debug_line    0x00007ae5      0x442 src/FreeRTOS/list.o
- .debug_line    0x00007f27      0x4cc src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
- .debug_line    0x000083f3      0x390 src/FreeRTOS/portable/MemMang/heap_3.o
- .debug_line    0x00008783      0xa01 src/FreeRTOS/queue.o
- .debug_line    0x00009184      0xe24 src/FreeRTOS/tasks.o
- .debug_line    0x00009fa8      0x6e0 src/FreeRTOS/timers.o
- .debug_line    0x0000a688      0x4b4 src/ASF/common/services/ioport/xmega/ioport_compat.o
- .debug_line    0x0000ab3c      0x4df src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_line    0x0000b01b     0x119a src/main.o
+ .debug_line    0x0000488e      0x7d6 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+ .debug_line    0x00005064      0x789 src/ASF/xmega/drivers/adc/adc.o
+ .debug_line    0x000057ed      0x95d src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .debug_line    0x0000614a      0x792 src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_line    0x000068dc      0xc93 src/ASF/xmega/drivers/usart/usart.o
+ .debug_line    0x0000756f      0x442 src/FreeRTOS/list.o
+ .debug_line    0x000079b1      0x4cc src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_line    0x00007e7d      0x390 src/FreeRTOS/portable/MemMang/heap_3.o
+ .debug_line    0x0000820d      0xa01 src/FreeRTOS/queue.o
+ .debug_line    0x00008c0e      0xe24 src/FreeRTOS/tasks.o
+ .debug_line    0x00009a32      0x6e0 src/FreeRTOS/timers.o
+ .debug_line    0x0000a112      0x4b4 src/ASF/common/services/ioport/xmega/ioport_compat.o
+ .debug_line    0x0000a5c6      0x4df src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_line    0x0000aaa5      0xfbc src/main.o
 
-.debug_frame    0x00000000     0x1820
+.debug_frame    0x00000000     0x1824
  *(.debug_frame)
  .debug_frame   0x00000000       0x68 src/ASF/common/components/display/st7565r/st7565r.o
  .debug_frame   0x00000068       0x64 src/ASF/common/services/clock/xmega/sysclk.o
@@ -3879,9 +3875,9 @@ END GROUP
  .debug_frame   0x000014b8      0x180 src/FreeRTOS/timers.o
  .debug_frame   0x00001638       0x30 src/ASF/common/services/ioport/xmega/ioport_compat.o
  .debug_frame   0x00001668       0x24 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_frame   0x0000168c      0x194 src/main.o
+ .debug_frame   0x0000168c      0x198 src/main.o
 
-.debug_str      0x00000000    0x38ed1
+.debug_str      0x00000000    0x38693
  *(.debug_str)
  .debug_str     0x00000000     0x21e4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_str     0x000021e4    0x2a366 src/ASF/common/components/display/st7565r/st7565r.o
@@ -3898,38 +3894,36 @@ END GROUP
                               0x2b1d9 (size before relaxing)
  .debug_str     0x0002da01     0x10b0 src/ASF/common/services/gfx_mono/sysfont.o
                               0x2c036 (size before relaxing)
- .debug_str     0x0002eab1      0x3d4 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
-                              0x27639 (size before relaxing)
- .debug_str     0x0002ee85      0x1bb src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+ .debug_str     0x0002eab1      0x1bb src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
                               0x2a232 (size before relaxing)
- .debug_str     0x0002f040      0x905 src/ASF/xmega/drivers/adc/adc.o
+ .debug_str     0x0002ec6c      0xca4 src/ASF/xmega/drivers/adc/adc.o
                               0x2a37d (size before relaxing)
- .debug_str     0x0002f945      0x57e src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .debug_str     0x0002f910      0x586 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
                               0x2a5dc (size before relaxing)
- .debug_str     0x0002fec3      0x343 src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_str     0x0002fe96      0x343 src/ASF/xmega/drivers/rtc32/rtc32.o
                               0x29d8f (size before relaxing)
- .debug_str     0x00030206      0x95a src/ASF/xmega/drivers/usart/usart.o
+ .debug_str     0x000301d9      0x95a src/ASF/xmega/drivers/usart/usart.o
                               0x2ad71 (size before relaxing)
- .debug_str     0x00030b60     0x2cfc src/FreeRTOS/list.o
+ .debug_str     0x00030b33     0x2cfc src/FreeRTOS/list.o
                               0x1cd06 (size before relaxing)
- .debug_str     0x0003385c     0x16bc src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_str     0x0003382f     0x16bc src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
                               0x1e7b2 (size before relaxing)
- .debug_str     0x00034f18       0xca src/FreeRTOS/portable/MemMang/heap_3.o
+ .debug_str     0x00034eeb       0xca src/FreeRTOS/portable/MemMang/heap_3.o
                               0x1d3db (size before relaxing)
- .debug_str     0x00034fe2     0x11d9 src/FreeRTOS/queue.o
+ .debug_str     0x00034fb5     0x11d9 src/FreeRTOS/queue.o
                               0x1e6ae (size before relaxing)
- .debug_str     0x000361bb     0x13b5 src/FreeRTOS/tasks.o
+ .debug_str     0x0003618e     0x13b5 src/FreeRTOS/tasks.o
                               0x1ebc9 (size before relaxing)
- .debug_str     0x00037570      0x396 src/FreeRTOS/timers.o
+ .debug_str     0x00037543      0x396 src/FreeRTOS/timers.o
                               0x1eb64 (size before relaxing)
- .debug_str     0x00037906       0x77 src/ASF/common/services/ioport/xmega/ioport_compat.o
+ .debug_str     0x000378d9       0x77 src/ASF/common/services/ioport/xmega/ioport_compat.o
                               0x278f0 (size before relaxing)
- .debug_str     0x0003797d       0xf7 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_str     0x00037950       0xf7 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
                               0x2936a (size before relaxing)
- .debug_str     0x00037a74     0x145d src/main.o
-                              0x3255c (size before relaxing)
+ .debug_str     0x00037a47      0xc4c src/main.o
+                              0x31951 (size before relaxing)
 
-.debug_loc      0x00000000     0xadbe
+.debug_loc      0x00000000     0xaae0
  *(.debug_loc)
  .debug_loc     0x00000000      0x7d7 src/ASF/common/components/display/st7565r/st7565r.o
  .debug_loc     0x000007d7      0x226 src/ASF/common/services/clock/xmega/sysclk.o
@@ -3950,7 +3944,7 @@ END GROUP
  .debug_loc     0x000093bd      0xb8b src/FreeRTOS/timers.o
  .debug_loc     0x00009f48       0x66 src/ASF/common/services/ioport/xmega/ioport_compat.o
  .debug_loc     0x00009fae      0x3fa src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_loc     0x0000a3a8      0xa16 src/main.o
+ .debug_loc     0x0000a3a8      0x738 src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -3970,7 +3964,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x958
+.debug_ranges   0x00000000      0x8b8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 src/ASF/common/components/display/st7565r/st7565r.o
  .debug_ranges  0x00000018       0x30 src/ASF/common/services/clock/xmega/sysclk.o
@@ -3981,20 +3975,19 @@ END GROUP
  .debug_ranges  0x00000290       0x98 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
  .debug_ranges  0x00000328       0x38 src/ASF/xmega/drivers/adc/adc.o
  .debug_ranges  0x00000360       0x68 src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
- .debug_ranges  0x000003c8       0x20 src/ASF/xmega/drivers/nvm/nvm_asm.o
- .debug_ranges  0x000003e8       0x50 src/ASF/xmega/drivers/rtc32/rtc32.o
- .debug_ranges  0x00000438       0x80 src/ASF/xmega/drivers/usart/usart.o
- .debug_ranges  0x000004b8       0x30 src/FreeRTOS/list.o
- .debug_ranges  0x000004e8       0x28 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
- .debug_ranges  0x00000510       0x18 src/FreeRTOS/portable/MemMang/heap_3.o
- .debug_ranges  0x00000528       0x98 src/FreeRTOS/queue.o
- .debug_ranges  0x000005c0      0x158 src/FreeRTOS/tasks.o
- .debug_ranges  0x00000718       0xb0 src/FreeRTOS/timers.o
- .debug_ranges  0x000007c8       0x10 src/ASF/common/services/ioport/xmega/ioport_compat.o
- .debug_ranges  0x000007d8       0x10 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_ranges  0x000007e8      0x170 src/main.o
+ .debug_ranges  0x000003c8       0x50 src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_ranges  0x00000418       0x80 src/ASF/xmega/drivers/usart/usart.o
+ .debug_ranges  0x00000498       0x30 src/FreeRTOS/list.o
+ .debug_ranges  0x000004c8       0x28 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_ranges  0x000004f0       0x18 src/FreeRTOS/portable/MemMang/heap_3.o
+ .debug_ranges  0x00000508       0x98 src/FreeRTOS/queue.o
+ .debug_ranges  0x000005a0      0x158 src/FreeRTOS/tasks.o
+ .debug_ranges  0x000006f8       0xb0 src/FreeRTOS/timers.o
+ .debug_ranges  0x000007a8       0x10 src/ASF/common/services/ioport/xmega/ioport_compat.o
+ .debug_ranges  0x000007b8       0x10 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_ranges  0x000007c8       0xf0 src/main.o
 
-.debug_macro    0x00000000     0x3c8b
+.debug_macro    0x00000000     0x3ac0
  *(.debug_macro)
  .debug_macro   0x00000000      0x276 src/ASF/common/components/display/st7565r/st7565r.o
  .debug_macro   0x00000276       0x82 src/ASF/common/components/display/st7565r/st7565r.o
@@ -4017,34 +4010,33 @@ END GROUP
  .debug_macro   0x000016d9       0xaa src/ASF/common/services/gfx_mono/gfx_mono_text.o
  .debug_macro   0x00001783      0x2db src/ASF/common/services/gfx_mono/sysfont.o
  .debug_macro   0x00001a5e       0x3a src/ASF/common/services/gfx_mono/sysfont.o
- .debug_macro   0x00001a98      0x1a3 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
- .debug_macro   0x00001c3b      0x234 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
- .debug_macro   0x00001e6f      0x22f src/ASF/xmega/drivers/adc/adc.o
- .debug_macro   0x0000209e      0x22f src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
- .debug_macro   0x000022cd      0x215 src/ASF/xmega/drivers/rtc32/rtc32.o
- .debug_macro   0x000024e2       0x10 src/ASF/xmega/drivers/rtc32/rtc32.o
- .debug_macro   0x000024f2      0x221 src/ASF/xmega/drivers/usart/usart.o
- .debug_macro   0x00002713      0x107 src/FreeRTOS/list.o
- .debug_macro   0x0000281a      0x11a src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
- .debug_macro   0x00002934       0x8e src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
- .debug_macro   0x000029c2      0x122 src/FreeRTOS/portable/MemMang/heap_3.o
- .debug_macro   0x00002ae4      0x17a src/FreeRTOS/queue.o
- .debug_macro   0x00002c5e       0x20 src/FreeRTOS/queue.o
- .debug_macro   0x00002c7e       0xb0 src/FreeRTOS/queue.o
- .debug_macro   0x00002d2e      0x1bd src/FreeRTOS/tasks.o
- .debug_macro   0x00002eeb       0x11 src/FreeRTOS/tasks.o
- .debug_macro   0x00002efc      0x144 src/FreeRTOS/timers.o
- .debug_macro   0x00003040      0x193 src/ASF/common/services/ioport/xmega/ioport_compat.o
- .debug_macro   0x000031d3      0x1b5 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_macro   0x00003388       0x2e src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_macro   0x000033b6      0x242 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
- .debug_macro   0x000035f8      0x4a3 src/main.o
- .debug_macro   0x00003a9b       0x34 src/main.o
- .debug_macro   0x00003acf       0x46 src/main.o
- .debug_macro   0x00003b15       0x1c src/main.o
- .debug_macro   0x00003b31       0x58 src/main.o
- .debug_macro   0x00003b89       0x10 src/main.o
- .debug_macro   0x00003b99       0xf2 src/main.o
+ .debug_macro   0x00001a98      0x234 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
+ .debug_macro   0x00001ccc      0x22f src/ASF/xmega/drivers/adc/adc.o
+ .debug_macro   0x00001efb      0x22f src/ASF/xmega/drivers/adc/xmega_aau/adc_aau.o
+ .debug_macro   0x0000212a      0x215 src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_macro   0x0000233f       0x10 src/ASF/xmega/drivers/rtc32/rtc32.o
+ .debug_macro   0x0000234f      0x221 src/ASF/xmega/drivers/usart/usart.o
+ .debug_macro   0x00002570      0x107 src/FreeRTOS/list.o
+ .debug_macro   0x00002677      0x11a src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_macro   0x00002791       0x8e src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o
+ .debug_macro   0x0000281f      0x122 src/FreeRTOS/portable/MemMang/heap_3.o
+ .debug_macro   0x00002941      0x17a src/FreeRTOS/queue.o
+ .debug_macro   0x00002abb       0x20 src/FreeRTOS/queue.o
+ .debug_macro   0x00002adb       0xb0 src/FreeRTOS/queue.o
+ .debug_macro   0x00002b8b      0x1bd src/FreeRTOS/tasks.o
+ .debug_macro   0x00002d48       0x11 src/FreeRTOS/tasks.o
+ .debug_macro   0x00002d59      0x144 src/FreeRTOS/timers.o
+ .debug_macro   0x00002e9d      0x193 src/ASF/common/services/ioport/xmega/ioport_compat.o
+ .debug_macro   0x00003030      0x1b5 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_macro   0x000031e5       0x2e src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_macro   0x00003213      0x242 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
+ .debug_macro   0x00003455      0x47b src/main.o
+ .debug_macro   0x000038d0       0x34 src/main.o
+ .debug_macro   0x00003904       0x46 src/main.o
+ .debug_macro   0x0000394a       0x1c src/main.o
+ .debug_macro   0x00003966       0x58 src/main.o
+ .debug_macro   0x000039be       0x10 src/main.o
+ .debug_macro   0x000039ce       0xf2 src/main.o
 OUTPUT(Praktikum_5_Template_6_2.elf elf32-avr)
 LOAD linker stubs
 
